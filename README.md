@@ -18,8 +18,8 @@ Processes include
 ## installation
 I. (optional) Install Anaconda
 
-(optional)
-II. Activate conda virtual env
+II. (optional)
+Activate conda virtual env
 ```
 conda activate
 ```
@@ -54,12 +54,12 @@ pip3 install face-recognition
 pip3 install imutils
 ```
 
-6. follow instructions in facial_section/README.md to set up the facial recognition
-I. add images to dataset folder if you need to identify more persons
-II. train dataset using train_model.py after adding the images
+6. follow instructions in `facial_section/README.md` to set up the facial recognition
+- I. add images to dataset folder if you need to identify more persons
+- II. train dataset using train_model.py after adding the images
 
 ## running
-navigate to [facial_section]
+navigate to `facial_section`
 
 run ```facial_req.py``` on host machine
 
