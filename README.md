@@ -7,8 +7,8 @@ especially for the facial recognition and nose mask aspect.
 
 So the [facial_section] is run on the host machine. And a server listens for data from the host machine to start working the PI processes.
 Processes include
-- [Run code to recognize faces on host machine]
-- [Start server on PI for recieving name of person from host machine]
+- [Run code to recognize faces on host machine](https://github.com/CovMan-Knust-final-year-project/Raspberry-Pi-Device/blob/main/facial_section/facial_req.py)
+- [Start server on PI for recieving name of person from host machine](https://github.com/CovMan-Knust-final-year-project/Raspberry-Pi-Device/blob/main/main.py)
 - [Use name to find id of person]
 - [Use id to mark attendance]
 - [Scan and save temperature using id of person]
@@ -56,8 +56,9 @@ pip3 install imutils
 ```
 
 6. follow instructions in `/facial_section/README.md` to set up the facial recognition
-- I. add images to dataset folder if you need to identify more persons
-- II. train dataset using train_model.py after adding the images
+- add images to dataset folder if you need to identify more persons
+-- (you can use [headshots.py[https://github.com/CovMan-Knust-final-year-project/Raspberry-Pi-Device/blob/main/facial_section/headshots.py]) to take multiple pictures
+- train dataset using [train_model.py](https://github.com/CovMan-Knust-final-year-project/Raspberry-Pi-Device/blob/main/facial_section/train_model.py) after adding the images
 
 ## running
 
