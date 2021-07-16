@@ -56,8 +56,7 @@ pip3 install imutils
 ```
 
 6. follow instructions in `/facial_section/README.md` to set up the facial recognition
-- add images to dataset folder if you need to identify more persons
--- (you can use [headshots.py[https://github.com/CovMan-Knust-final-year-project/Raspberry-Pi-Device/blob/main/facial_section/headshots.py]) to take multiple pictures
+- add images to dataset folder if you need to identify more persons (you can use [headshots.py](https://github.com/CovMan-Knust-final-year-project/Raspberry-Pi-Device/blob/main/facial_section/headshots.py]) to take multiple pictures
 - train dataset using [train_model.py](https://github.com/CovMan-Knust-final-year-project/Raspberry-Pi-Device/blob/main/facial_section/train_model.py) after adding the images
 
 ## running
