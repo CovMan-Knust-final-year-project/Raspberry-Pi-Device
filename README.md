@@ -1,18 +1,18 @@
 # Raspberry-Pi-Device
 
 # Description
-This project uses [Tensorflow] and [openCV] with [python] and [PHP] for the apis.
+This project uses *Tensorflow* and [openCV] with [python] and [PHP] for the apis.
 The raspberry pi 3B was used for the project. It turns out that Tensorflow runs extremely slow on this particular version of raspberry pi
 especially for the facial recognition and nose mask aspect.
 
 So the [facial_section] is run on the host machine. And a server listens for data from the host machine to start working the PI processes.
 Processes include
-[Start server for recieving name from host machine]
-[Use name to find id of person]
-[Use id to mark attendance]
-[Scan and save temperature]
-[Dispense sanitizer]
-[Send Sms]
+- [Start server for recieving name from host machine]
+- [Use name to find id of person]
+- [Use id to mark attendance]
+- [Scan and save temperature]
+- [Dispense sanitizer]
+-[Send Sms]
 
 
 ## installation
@@ -54,14 +54,13 @@ pip3 install face-recognition
 pip3 install imutils
 ```
 
-6. follow instructions in `facial_section/README.md` to set up the facial recognition
+6. follow instructions in `/facial_section/README.md` to set up the facial recognition
 - I. add images to dataset folder if you need to identify more persons
 - II. train dataset using train_model.py after adding the images
 
 ## running
-navigate to `facial_section`
 
-run ```facial_req.py``` on host machine
+run ```/facial_section/facial_req.py``` on host machine
 
 run ```main.py``` in Pi device
 
