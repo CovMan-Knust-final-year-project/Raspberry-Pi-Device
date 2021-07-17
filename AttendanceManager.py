@@ -1,9 +1,14 @@
 import requests
 from Urls import *
+from Variables import *
+from TemperatureManager import *
+
 
 class AttendanceManager:
-    def __init__(self, person_id):
+    def __init__(self, person_id, person_name):
         self.person_id = person_id
+        self.person_name = person_name
+        self.variables = Variables()
         self.url = Urls().markAttendance()
 
     def MarkAttendance(self):
@@ -11,7 +16,7 @@ class AttendanceManager:
 
         #save attendance to database using the api
         headers = {}
-        payload={'person_id': self.person_id, 'org_id' : 24, 'venue': 2}
+        payload={'person_id': self.person_id, 'org_id' : self.variables.org_id(), 'venue': self.variables.mount_point_id()}
         files = []
 
         response = requests.request("POST", self.url, headers=headers,
@@ -21,9 +26,9 @@ class AttendanceManager:
             return "APIError: status={}".format(resp.status_code)
         results = response.json()
         if(results['status'] == "success"):
-            print("Attendance marked successfully")
+            print("Attendance for {} marked successfully".format(self.person_name))
             #Scan temperature here
-            #scanTemperature(results['user_id'])
+            TemperatureManager(self.person_id, self.person_name).scanTemperature()
             return
         print(results['message'])
 

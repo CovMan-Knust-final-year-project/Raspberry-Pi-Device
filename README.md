@@ -15,6 +15,13 @@ Processes include
 - [Dispense sanitizer]
 - [Send Sms to person]
 
+### Components
+- Raspberry Pi 3B
+- Raspberry Pi camera
+- GY-906 mlx90614esf Non-contact infrared temperature sensor
+- Jumper Wires
+- Bread board
+
 
 ## installation
 I. (optional) Install Anaconda
@@ -58,6 +65,55 @@ pip3 install imutils
 6. follow instructions in `/facial_section/README.md` to set up the facial recognition
 - add images to dataset folder if you need to identify more persons (you can use [headshots.py](https://github.com/CovMan-Knust-final-year-project/Raspberry-Pi-Device/blob/main/facial_section/headshots.py]) to take multiple pictures
 - train dataset using [train_model.py](https://github.com/CovMan-Knust-final-year-project/Raspberry-Pi-Device/blob/main/facial_section/train_model.py) after adding the images
+
+
+
+## set up the GY-906 mlx90614esf Non-contact infrared temperature sensor
+
+1. Turn i2c interfacing ON in Raspberry pi configurations
+
+2. [PyMLX90614 python installation files]("https://pypi.org/project/PyMLX90614")
+
+3. install the packages using pip3
+```
+pip3 install PyMLX90614
+```
+
+4. assemble the temperature components onto the PI. Setup the sensor on the PI.
+- https://www.youtube.com/watch?v=4V0_PBwg4c0
+- Circuit setup
+    a. Circuit design
+        <img src="images/circuit_design.png" width="40%">
+
+    b. [Circuit pins](https://pinout.xyz/)
+        <img src="images/pin1.png">
+        <img src="images/pin2.png">
+
+5. Enter this in terminal
+```
+ls /dev/*i2c*
+```
+
+6.ensure the device is available on the i2c bus. Type
+```
+i2cdetect -y 1
+```
+
+- output should look like this showing that sensor is functional
+    <img src="images/functional_sensor.png">
+
+
+7. Make new file and copy and paste code to record the temperature
+```
+from smbus2 import SMBus
+from mlx90614 import MLX90614
+
+bus = SMBus(1)
+sensor = MLX90614(bus, address=0x5A)
+print(sensor.get_ambient())
+print(sensor.get_object_1())
+bus.close()
+```
 
 ## running
 

@@ -9,6 +9,9 @@ import pickle
 import time
 import cv2
 
+#import the function that should send information to the PI
+from senddatatopi import *
+
 #Initialize 'currentname' to trigger only when a new person is identified.
 currentname = "unknown"
 #Determine faces from encodings.pickle file model created from train_model.py
@@ -24,8 +27,8 @@ detector = cv2.CascadeClassifier(cascade)
 
 # initialize the video stream and allow the camera sensor to warm up
 print("[INFO] starting video stream...")
-#vs = VideoStream(src=0).start()
-vs = VideoStream(usePiCamera=True).start()
+vs = VideoStream(src=0).start()
+#vs = VideoStream(usePiCamera=True).start()
 time.sleep(2.0)
 
 # start the FPS counter
@@ -88,6 +91,7 @@ while True:
 			if currentname != name:
 				currentname = name
 				print(currentname)
+				senddatatoPi(name).sendData()
 		
 		# update the list of names
 		names.append(name)

@@ -7,3 +7,6 @@ class Urls:
 
     def markAttendance(self):
         return self.initial + "markAttendance.php"
+
+    def saveTemperature(self):
+        return self.initial + "saveTemperature.php"

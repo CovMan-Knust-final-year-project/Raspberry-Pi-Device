@@ -24,7 +24,7 @@ class FetchUserIdFromDatabase:
         if(results['status'] == "success"):
             #print("the user id = " + results['user_id'])
             #mark the attendance here
-            AttendanceManager(results['user_id']).MarkAttendance()
+            AttendanceManager(results['user_id'], self.person_name).MarkAttendance()
             return
         print(results['message'])
 
