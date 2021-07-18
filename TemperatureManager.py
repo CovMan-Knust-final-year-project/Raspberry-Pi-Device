@@ -32,23 +32,27 @@ class TemperatureManager:
             print("Check temperature sensor pins")
         
     def saveTemperature(self, temp):
-        #save temperature to database using the api
-        headers = {}
-        payload={'person_id': self.person_id, 'org_id' : self.variables.org_id(), 'venue': self.variables.mount_point_id(), 'temp': temp}
-        files = []
+        try:
+            #save temperature to database using the api
+            headers = {}
+            payload={'person_id': self.person_id, 'org_id' : self.variables.org_id(), 'venue': self.variables.mount_point_id(), 'temp': temp}
+            files = []
 
-        response = requests.request("POST", self.url, headers=headers,
-                                    data=payload, files=files)
-        if(response.status_code == 201):
-            print("failed")
-            return "APIError: status={}".format(resp.status_code)
-        #time.sleep(5)
-        results = response.json()
-        if(results['status'] == "success"):
-            print("Temperature for {} saved successfully".format(self.person_name))
+            response = requests.request("POST", self.url, headers=headers,
+                                        data=payload, files=files)
+            if(response.status_code == 201):
+                print("failed")
+                return "APIError: status={}".format(resp.status_code)
+            #time.sleep(5)
+            results = response.json()
+            if(results['status'] == "success"):
+                print("Temperature for {} saved successfully".format(self.person_name))
 
-            #dispense sanitizer here
-            return
-        print(results['message'])
+                #dispense sanitizer here
+                return
+            print(results['message'])
+            
+        except ValueError:
+            print("Something went wrong with API")
 
 #TemperatureManager(6, "Jesse Anim").scanTemperature()
