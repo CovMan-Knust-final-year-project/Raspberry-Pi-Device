@@ -4,8 +4,13 @@ from Variables import *
 from smbus2 import SMBus
 from mlx90614 import MLX90614
 
-#import time
+import time
+from gpiozero import Buzzer
 
+
+## buzzer initialization starts here
+buzzer = Buzzer(5)
+## buzzer initialization ends here
 
 class TemperatureManager:
     def __init__(self, person_id, person_name):
@@ -47,7 +52,11 @@ class TemperatureManager:
             results = response.json()
             if(results['status'] == "success"):
                 print("Temperature for {} saved successfully".format(self.person_name))
-
+                ## buzz here
+                buzzer.on()
+                time.sleep(1)
+                buzzer.off()
+                time.sleep(1)
                 #dispense sanitizer here
                 return
             print(results['message'])
